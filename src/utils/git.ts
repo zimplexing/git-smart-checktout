@@ -28,19 +28,19 @@ export function getRepoName(repo: Repository): string {
 export function listRefNames(): GitContext {
   const repos = getRepos();
   const refNamesMap = new Map() as RefMap;
-  repos.forEach((it) => registerRefNames(it, refNamesMap));
+  repos.forEach(it => registerRefNames(it, refNamesMap));
 
   const refNames = [...refNamesMap.keys()].sort();
   return { repos, refNames, refNamesMap };
 }
 
 export async function fetchRepos(context: GitContext): Promise<void> {
-  await parallelize(context.repos, (repo) => fetchRepo(repo));
+  await parallelize(context.repos, repo => fetchRepo(repo));
 }
 
 export async function createBranches(reposNames: string[], branchName: string, context: GitContext): Promise<void> {
-  const repos = context.repos.filter((repo) => reposNames.includes(getRepoName(repo)));
-  await parallelize(repos, (repo) => createBranch(repo, branchName));
+  const repos = context.repos.filter(repo => reposNames.includes(getRepoName(repo)));
+  await parallelize(repos, repo => createBranch(repo, branchName));
 }
 
 // -----------------------------------------------------------------------------
@@ -59,7 +59,6 @@ async function checkoutRepoRef(repo: Repository, refName: string): Promise<void>
     console.error(`Failed to checkout ref in folder ${path}.`);
   }
 }
-
 
 async function fetchRepo(repo: Repository): Promise<void> {
   try {
