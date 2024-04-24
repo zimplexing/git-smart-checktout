@@ -3,14 +3,14 @@
 import * as vscode from 'vscode';
 import checkout from './command/checkout';
 
-const commands = [checkout];
+const commands = [checkout, { commandId: 'git-smart-checkout.show.branches', execute: checkout.execute, initialize: () => {}}];
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	for (const { commandId, execute, initQuickItems } of commands) {
+	for (const { commandId, execute, initialize } of commands) {
 		const disposable = vscode.commands.registerCommand(commandId, execute);
-		initQuickItems();
+		initialize();
 		context.subscriptions.push(disposable);
 	}
 }

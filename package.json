@@ -1,15 +1,16 @@
 {
   "name": "git-smart-checkout",
-  "displayName": "git-smart-checkout",
+  "displayName": "Smart Git",
   "description": "A smart & quick git checkout extension.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.80.0"
   },
   "categories": [
     "Other"
   ],
-  "author": "zimplexing",
+  "author": "N",
+  "publisher": "N",
   "activationEvents": [
     "onStartupFinished"
   ],
@@ -18,7 +19,7 @@
     "commands": [
       {
         "command": "git-smart-checkout.checkout",
-        "title": "smart checkout"
+        "title": "Smart Git: Checkout"
       }
     ]
   },
@@ -31,7 +32,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.88.0",
+    "@types/vscode": "^1.80.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
